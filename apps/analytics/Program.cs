@@ -1,5 +1,7 @@
 using Common.Auth;
+using Common.Messaging;
 using Common.Telemetry;
+using Analytics.Application.Services;
 using Analytics.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,8 +11,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AnalyticsDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("AnalyticsDb")));
 
+// NATS messaging
+builder.Services.AddNatsMessaging(builder.Configuration["Nats:Url"] ?? "nats://localhost:4222");
+
+// Application services
+builder.Services.AddScoped<MetricsService>();
+builder.Services.AddHostedService<TransactionConsumerService>();
+
 // Authentication
 builder.Services.AddJwtAuthentication(builder.Configuration);
+
+// Controllers
+builder.Services.AddControllers();
 
 // Observability
 builder.Services.AddObservability("analytics-service",
@@ -21,7 +33,8 @@ builder.Services.AddOpenApi();
 
 // Health checks
 builder.Services.AddHealthChecks()
-    .AddDbContextCheck<AnalyticsDbContext>();
+    .AddDbContextCheck<AnalyticsDbContext>()
+    .AddCheck<NatsHealthCheck>("nats");
 
 var app = builder.Build();
 
@@ -43,6 +56,7 @@ app.UseAuthorization();
 // Prometheus metrics endpoint
 app.UseOpenTelemetryPrometheusScrapingEndpoint();
 
+app.MapControllers();
 app.MapHealthChecks("/health");
 
 app.Run();

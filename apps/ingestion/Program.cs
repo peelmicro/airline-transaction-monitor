@@ -1,6 +1,9 @@
 using Common.Auth;
+using Common.Messaging;
 using Common.Telemetry;
+using Ingestion.Application.Ports;
 using Ingestion.Infrastructure.Data;
+using Ingestion.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,8 +12,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<IngestionDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("IngestionDb")));
 
+// Repository (hexagonal adapter)
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+
+// NATS messaging
+builder.Services.AddNatsMessaging(builder.Configuration["Nats:Url"] ?? "nats://localhost:4222");
+
 // Authentication
 builder.Services.AddJwtAuthentication(builder.Configuration);
+
+// Controllers
+builder.Services.AddControllers();
 
 // Observability
 builder.Services.AddObservability("ingestion-service",
@@ -21,7 +33,8 @@ builder.Services.AddOpenApi();
 
 // Health checks
 builder.Services.AddHealthChecks()
-    .AddDbContextCheck<IngestionDbContext>();
+    .AddDbContextCheck<IngestionDbContext>()
+    .AddCheck<NatsHealthCheck>("nats");
 
 var app = builder.Build();
 
@@ -43,6 +56,7 @@ app.UseAuthorization();
 // Prometheus metrics endpoint
 app.UseOpenTelemetryPrometheusScrapingEndpoint();
 
+app.MapControllers();
 app.MapHealthChecks("/health");
 
 app.Run();
