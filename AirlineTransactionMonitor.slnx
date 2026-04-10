@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/apps/" />
+  <Folder Name="/apps/analytics/">
+    <Project Path="apps/analytics/Analytics.csproj" />
+  </Folder>
+  <Folder Name="/apps/common/">
+    <Project Path="apps/common/Common.csproj" />
+  </Folder>
+  <Folder Name="/apps/gateway/">
+    <Project Path="apps/gateway/Gateway.csproj" />
+  </Folder>
+  <Folder Name="/apps/ingestion/">
+    <Project Path="apps/ingestion/Ingestion.csproj" />
+  </Folder>
+  <Folder Name="/apps/simulator/">
+    <Project Path="apps/simulator/Simulator.csproj" />
+  </Folder>
+</Solution>
