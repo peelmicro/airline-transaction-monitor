@@ -1,0 +1,45 @@
+{
+  "name": "airline-transaction-monitor",
+  "private": true,
+  "scripts": {
+    "--- INFRASTRUCTURE ---": "",
+    "infra:up": "docker compose -f docker-compose.infra.yml up -d",
+    "infra:down": "docker compose -f docker-compose.infra.yml down",
+    "infra:clean": "docker compose -f docker-compose.infra.yml down -v",
+    "infra:ps": "docker compose -f docker-compose.infra.yml ps",
+    "infra:logs": "docker compose -f docker-compose.infra.yml logs -f",
+
+    "--- FULL STACK (12 containers) ---": "",
+    "dc:up": "docker compose up -d",
+    "dc:down": "docker compose down",
+    "dc:clean": "docker compose down -v",
+    "dc:ps": "docker compose ps",
+    "dc:logs": "docker compose logs -f",
+
+    "--- INDIVIDUAL SERVICE LOGS ---": "",
+    "dc:logs:pg": "docker compose -f docker-compose.infra.yml logs -f postgres",
+    "dc:logs:nats": "docker compose -f docker-compose.infra.yml logs -f nats",
+    "dc:logs:n8n": "docker compose -f docker-compose.infra.yml logs -f n8n",
+    "dc:logs:jaeger": "docker compose -f docker-compose.infra.yml logs -f jaeger",
+    "dc:logs:grafana": "docker compose -f docker-compose.infra.yml logs -f grafana",
+    "dc:logs:sonar": "docker compose -f docker-compose.infra.yml logs -f sonarqube",
+
+    "--- .NET SERVICES (local dev) ---": "",
+    "gateway": "dotnet run --project apps/gateway",
+    "ingestion": "dotnet run --project apps/ingestion",
+    "analytics": "dotnet run --project apps/analytics",
+    "simulator": "dotnet run --project apps/simulator",
+    "build": "dotnet build",
+    "test": "dotnet test",
+
+    "--- ANGULAR DASHBOARD (local dev) ---": "",
+    "web": "cd apps/web && npm start",
+    "web:test": "cd apps/web && npx vitest --run",
+    "web:build": "cd apps/web && npm run build",
+    "web:lint": "cd apps/web && npm run lint",
+
+    "--- DATABASE ---": "",
+    "db:migrate:ingestion": "dotnet ef database update --project apps/ingestion",
+    "db:migrate:analytics": "dotnet ef database update --project apps/analytics"
+  }
+}

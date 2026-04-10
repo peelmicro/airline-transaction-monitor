@@ -1,0 +1,133 @@
+services:
+  # ─── PostgreSQL 16 ────────────────────────────────────────────────────
+  # Hosts both ingestion_db and analytics_db (created via init script)
+  # In production, these would be separate instances for independent scaling
+  postgres:
+    image: postgres:16
+    container_name: atm-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/postgres/init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ─── NATS JetStream ───────────────────────────────────────────────────
+  # Message broker for async events between services
+  # JetStream enabled for durable streams (transaction.created, metrics.updated, alert.raised)
+  nats:
+    image: nats:latest
+    container_name: atm-nats
+    command: ["--jetstream", "--store_dir", "/data", "-m", "8222"]
+    ports:
+      - "4222:4222"   # Client connections
+      - "8222:8222"   # HTTP monitoring
+    volumes:
+      - nats_data:/data
+
+  # ─── n8n (demo-only) ──────────────────────────────────────────────────
+  # Workflow scheduler that triggers TransactionSimulator on a schedule
+  # Pre-loaded workflows auto-imported from n8n/workflows/ on startup
+  # First run requires one-time setup wizard (see README for credentials)
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: atm-n8n
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=http://localhost:5678/
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_PERSONALIZATION_ENABLED=false
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./n8n/workflows:/home/node/workflows
+
+  # ─── SonarQube ─────────────────────────────────────────────────────────
+  # Code quality analysis with quality gates
+  # ~1.5GB RAM — valid for assessment, production use SonarCloud
+  # Credentials: admin / admin (force-reset disabled to skip password change prompt)
+  sonarqube:
+    image: sonarqube:community
+    container_name: atm-sonarqube
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+      - SONAR_FORCEAUTHENTICATION=false
+    ports:
+      - "9000:9000"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+
+  # ─── Jaeger ────────────────────────────────────────────────────────────
+  # Distributed trace visualization (OpenTelemetry traces exported here)
+  # All-in-one image includes collector, query, and UI
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: atm-jaeger
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "4317:4317"    # OTLP gRPC (OpenTelemetry traces)
+      - "4318:4318"    # OTLP HTTP (OpenTelemetry traces)
+
+  # ─── Prometheus ────────────────────────────────────────────────────────
+  # Metrics collection — scrapes /metrics from all .NET services
+  # Config in infra/prometheus/prometheus.yml
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: atm-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+
+  # ─── Grafana ───────────────────────────────────────────────────────────
+  # Dashboards for Prometheus metrics and Jaeger traces
+  # Auto-provisioned with datasources and dashboard on startup
+  # Anonymous access enabled — no login required for reviewers
+  grafana:
+    image: grafana/grafana:latest
+    container_name: atm-grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./infra/grafana/provisioning:/etc/grafana/provisioning
+      - ./infra/grafana/dashboards:/var/lib/grafana/dashboards
+    depends_on:
+      - prometheus
+
+volumes:
+  postgres_data:
+  nats_data:
+  n8n_data:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  prometheus_data:
+  grafana_data:
