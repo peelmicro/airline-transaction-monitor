@@ -1,0 +1,17 @@
+á
+˚/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/obj/Debug/net10.0/Microsoft.AspNetCore.App.SourceGenerators/Microsoft.AspNetCore.SourceGenerators.PublicProgramSourceGenerator/PublicTopLevelProgram.Generated.g.csutf-8ã
+ˇ/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/obj/Debug/net10.0/Microsoft.AspNetCore.OpenApi.SourceGenerators/Microsoft.AspNetCore.OpenApi.SourceGenerators.XmlCommentGenerator/OpenApiXmlCommentSupport.generated.csutf-8†
+î/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/obj/Debug/net10.0/Gateway.MvcApplicationPartsAssemblyInfo.csutf-8ç
+Å/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/obj/Debug/net10.0/Gateway.AssemblyInfo.csutf-8•
+ô/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/obj/Debug/net10.0/.NETCoreApp,Version=v10.0.AssemblyAttributes.csutf-8è
+É/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/obj/Debug/net10.0/Gateway.GlobalUsings.g.csutf-8k
+b/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Program.csutf-8}
+t/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Nats/NatsToSignalRService.csutf-8w
+n/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Hubs/TransactionHub.csutf-8å
+Ç/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Controllers/TransactionsProxyController.csutf-8Ü
+}/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Controllers/MetricsProxyController.csutf-8~
+u/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Controllers/AuthController.csutf-8r
+i/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Auth/UserStore.csutf-8u
+l/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Auth/TokenService.csutf-8v
+m/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Auth/LoginResponse.csutf-8u
+l/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Auth/LoginRequest.csutf-8

@@ -1,0 +1,11 @@
+﻿/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/Controllers/SimulatorController.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/Generators/TransactionGenerator.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/Program.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/obj/Debug/net10.0/Simulator.GlobalUsings.g.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/obj/Debug/net10.0/.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/obj/Debug/net10.0/Simulator.AssemblyInfo.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/obj/Debug/net10.0/Simulator.MvcApplicationPartsAssemblyInfo.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/appsettings.Development.json
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/appsettings.json
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/Simulator.http
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/Properties/launchSettings.json

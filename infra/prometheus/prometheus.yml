@@ -1,24 +1,41 @@
+# ── Prometheus configuration ────────────────────────────────────────────
+# Scrapes /metrics from all 4 .NET services every 15s.
+# Metrics are exposed via OpenTelemetry Prometheus exporter (AddPrometheusExporter).
+#
+# Two sets of targets so the same config works in both modes:
+#   - host.docker.internal:<port>  → when services run on the host (local dev)
+#   - <service>:<port>             → when services run in Docker Compose (Phase 9)
+# Prometheus will try both; the unreachable one will be marked DOWN but won't
+# affect the reachable one.
+
 global:
   scrape_interval: 15s
   evaluation_interval: 15s
+  external_labels:
+    cluster: airline-transaction-monitor
+    environment: local
 
 scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
   - job_name: "gateway"
     static_configs:
-      - targets: ["gateway:5000"]
+      - targets: ["host.docker.internal:5000", "gateway:5000"]
     metrics_path: /metrics
 
   - job_name: "ingestion"
     static_configs:
-      - targets: ["ingestion:5001"]
+      - targets: ["host.docker.internal:5001", "ingestion:5001"]
     metrics_path: /metrics
 
   - job_name: "analytics"
     static_configs:
-      - targets: ["analytics:5002"]
+      - targets: ["host.docker.internal:5002", "analytics:5002"]
     metrics_path: /metrics
 
   - job_name: "simulator"
     static_configs:
-      - targets: ["simulator:5003"]
+      - targets: ["host.docker.internal:5003", "simulator:5003"]
     metrics_path: /metrics

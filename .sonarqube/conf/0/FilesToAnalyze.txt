@@ -1,0 +1,14 @@
+﻿/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Auth/JwtServiceExtensions.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Auth/JwtSettings.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Events/AlertRaisedEvent.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Events/MetricsUpdatedEvent.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Events/TransactionCreatedEvent.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Messaging/IEventPublisher.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Messaging/IEventSubscriber.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Messaging/NatsEventPublisher.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Messaging/NatsEventSubscriber.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Messaging/NatsHealthCheck.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Messaging/NatsServiceExtensions.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Messaging/NatsStreamConfigurator.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Messaging/NatsSubjects.cs
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Telemetry/OpenTelemetryExtensions.cs

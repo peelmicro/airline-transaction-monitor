@@ -1,0 +1,28 @@
+Product projects
+---------------------------------------
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/Simulator.csproj
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/gateway/Gateway.csproj
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Ingestion.csproj
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/analytics/Analytics.csproj
+/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Common.csproj
+
+
+Test projects
+---------------------------------------
+
+
+Invalid projects
+---------------------------------------
+{none}
+
+
+Skipped projects
+---------------------------------------
+{none}
+
+
+Excluded projects
+---------------------------------------
+{none}
+
+

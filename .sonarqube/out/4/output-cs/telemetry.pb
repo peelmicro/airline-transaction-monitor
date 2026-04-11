@@ -1,0 +1,1 @@
+wRj/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/analytics/Analytics.csprojòCSharp14

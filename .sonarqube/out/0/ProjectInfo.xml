@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>Common</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>715057d8-bbe3-4a45-8e2b-89ab075c9058</ProjectGuid>
+  <FullPath>/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/common/Common.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResultFiles>
+    <AnalysisResultFile Id="FilesToAnalyze" Location="/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/.sonarqube/conf/0/FilesToAnalyze.txt" />
+  </AnalysisResultFiles>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePaths">/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/.sonarqube/out/0/Issues.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPaths">/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/.sonarqube/out/0</Property>
+    <Property Name="sonar.cs.scanner.telemetry">/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/.sonarqube/out/0/Telemetry.json</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>net10.0</TargetFramework>
+</ProjectInfo>

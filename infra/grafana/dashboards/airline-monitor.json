@@ -1,78 +1,184 @@
 {
   "annotations": {
-    "list": []
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": { "type": "grafana", "uid": "-- Grafana --" },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
+  "graphTooltip": 1,
   "id": null,
   "links": [],
   "panels": [
     {
-      "title": "Request Rate (per service)",
+      "title": "Request Rate (req/s per service)",
       "type": "timeseries",
-      "datasource": "Prometheus",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
       "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "color": { "mode": "palette-classic" }
+        }
+      },
+      "options": {
+        "legend": { "displayMode": "table", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "multi" }
+      },
       "targets": [
         {
-          "expr": "rate(http_server_request_duration_seconds_count[1m])",
-          "legendFormat": "{{job}}"
+          "expr": "sum by (job) (rate(http_server_request_duration_seconds_count[1m]))",
+          "legendFormat": "{{job}}",
+          "refId": "A"
         }
       ]
     },
     {
-      "title": "Error Rate (per service)",
+      "title": "Error Rate (5xx per service)",
       "type": "timeseries",
-      "datasource": "Prometheus",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
       "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "color": { "mode": "palette-classic" }
+        }
+      },
+      "options": {
+        "legend": { "displayMode": "table", "placement": "bottom", "showLegend": true }
+      },
       "targets": [
         {
-          "expr": "rate(http_server_request_duration_seconds_count{http_response_status_code=~\"5..\"}[1m])",
-          "legendFormat": "{{job}} errors"
+          "expr": "sum by (job) (rate(http_server_request_duration_seconds_count{http_response_status_code=~\"5..\"}[1m]))",
+          "legendFormat": "{{job}}",
+          "refId": "A"
         }
       ]
     },
     {
-      "title": "P95 Latency (per service)",
+      "title": "P95 Latency (seconds)",
       "type": "timeseries",
-      "datasource": "Prometheus",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
       "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "color": { "mode": "palette-classic" }
+        }
+      },
       "targets": [
         {
-          "expr": "histogram_quantile(0.95, rate(http_server_request_duration_seconds_bucket[5m]))",
-          "legendFormat": "{{job}} P95"
+          "expr": "histogram_quantile(0.95, sum by (job, le) (rate(http_server_request_duration_seconds_bucket[5m])))",
+          "legendFormat": "{{job}} p95",
+          "refId": "A"
         }
       ]
     },
     {
-      "title": "NATS Consumer Lag",
+      "title": "P99 Latency (seconds)",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "color": { "mode": "palette-classic" }
+        }
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum by (job, le) (rate(http_server_request_duration_seconds_bucket[5m])))",
+          "legendFormat": "{{job}} p99",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "title": "Active Requests",
       "type": "stat",
-      "datasource": "Prometheus",
-      "gridPos": { "h": 8, "w": 6, "x": 12, "y": 8 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 16 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 50 },
+              { "color": "red", "value": 100 }
+            ]
+          }
+        }
+      },
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "colorMode": "value",
+        "graphMode": "area"
+      },
       "targets": [
         {
-          "expr": "nats_consumer_num_pending",
-          "legendFormat": "{{stream}} / {{consumer}}"
+          "expr": "sum by (job) (http_server_active_requests)",
+          "legendFormat": "{{job}}",
+          "refId": "A"
         }
       ]
     },
     {
-      "title": "DB Connection Pool",
-      "type": "gauge",
-      "datasource": "Prometheus",
-      "gridPos": { "h": 8, "w": 6, "x": 18, "y": 8 },
+      "title": "Process Memory Usage",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 6, "w": 9, "x": 6, "y": 16 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes"
+        }
+      },
       "targets": [
         {
-          "expr": "db_client_connections_usage{state=\"used\"}",
-          "legendFormat": "{{job}}"
+          "expr": "process_memory_usage_bytes",
+          "legendFormat": "{{job}}",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "title": "GC Collections (rate/s)",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 6, "w": 9, "x": 15, "y": 16 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "cps"
+        }
+      },
+      "targets": [
+        {
+          "expr": "sum by (job, generation) (rate(dotnet_gc_collections_total[1m]))",
+          "legendFormat": "{{job}} gen{{generation}}",
+          "refId": "A"
         }
       ]
     }
   ],
+  "refresh": "10s",
   "schemaVersion": 39,
   "tags": ["airline-monitor"],
   "templating": { "list": [] },
-  "time": { "from": "now-1h", "to": "now" },
+  "time": { "from": "now-30m", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
   "title": "Airline Transaction Monitor",
-  "uid": "airline-monitor"
+  "uid": "airline-monitor",
+  "version": 1,
+  "weekStart": ""
 }

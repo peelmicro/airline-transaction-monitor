@@ -85,9 +85,13 @@ services:
   # ─── Prometheus ────────────────────────────────────────────────────────
   # Metrics collection — scrapes /metrics from all .NET services
   # Config in infra/prometheus/prometheus.yml
+  # extra_hosts allows Prometheus to reach host-running services during local
+  # development via host.docker.internal (Linux needs host-gateway mapping)
   prometheus:
     image: prom/prometheus:latest
     container_name: atm-prometheus
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "9090:9090"
     volumes:

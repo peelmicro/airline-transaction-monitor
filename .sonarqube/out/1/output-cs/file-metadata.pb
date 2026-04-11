@@ -1,0 +1,10 @@
+â
+˝/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/obj/Debug/net10.0/Microsoft.AspNetCore.App.SourceGenerators/Microsoft.AspNetCore.SourceGenerators.PublicProgramSourceGenerator/PublicTopLevelProgram.Generated.g.csutf-8ç
+Å/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/obj/Debug/net10.0/Microsoft.AspNetCore.OpenApi.SourceGenerators/Microsoft.AspNetCore.OpenApi.SourceGenerators.XmlCommentGenerator/OpenApiXmlCommentSupport.generated.csutf-8§
+ò/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/obj/Debug/net10.0/Simulator.MvcApplicationPartsAssemblyInfo.csutf-8ë
+Ö/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/obj/Debug/net10.0/Simulator.AssemblyInfo.csutf-8ß
+õ/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/obj/Debug/net10.0/.NETCoreApp,Version=v10.0.AssemblyAttributes.csutf-8ì
+á/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/obj/Debug/net10.0/Simulator.GlobalUsings.g.csutf-8m
+d/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/Program.csutf-8Ö
+|/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/Generators/TransactionGenerator.csutf-8Ö
+|/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/Controllers/SimulatorController.csutf-8

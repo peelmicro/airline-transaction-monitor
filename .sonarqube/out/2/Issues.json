@@ -1,0 +1,1421 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "5.0.0.0",
+        "fileVersion": "5.0.0-2.26153.111 (a612c2a1)",
+        "semanticVersion": "5.0.0",
+        "language": "en-IE"
+      },
+      "results": [
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/appsettings.json",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 21,
+                  "endLine": 10,
+                  "endColumn": 103
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'card_brands' 4 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 23,
+                  "endLine": 15,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 41,
+                  "endLine": 135,
+                  "endColumn": 54
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 170,
+                  "startColumn": 24,
+                  "endLine": 170,
+                  "endColumn": 37
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 230,
+                  "startColumn": 23,
+                  "endLine": 230,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'gen_random_uuid()' 5 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 93,
+                  "endLine": 18,
+                  "endColumn": 112
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 93,
+                  "endLine": 35,
+                  "endColumn": 112
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 93,
+                  "endLine": 52,
+                  "endColumn": 112
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 93,
+                  "endLine": 76,
+                  "endColumn": 112
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 100,
+                  "startColumn": 93,
+                  "endLine": 100,
+                  "endColumn": 112
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'character varying(20)' 5 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 55,
+                  "endLine": 19,
+                  "endColumn": 78
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 55,
+                  "endLine": 53,
+                  "endColumn": 78
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 77,
+                  "startColumn": 55,
+                  "endLine": 77,
+                  "endColumn": 78
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 109,
+                  "startColumn": 57,
+                  "endLine": 109,
+                  "endColumn": 80
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 63,
+                  "endLine": 110,
+                  "endColumn": 86
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'character varying(100)' 4 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 55,
+                  "endLine": 20,
+                  "endColumn": 79
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 55,
+                  "endLine": 54,
+                  "endColumn": 79
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 55,
+                  "endLine": 78,
+                  "endColumn": 79
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 69,
+                  "endLine": 113,
+                  "endColumn": 93
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'timestamp with time zone' 14 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 63,
+                  "endLine": 22,
+                  "endColumn": 89
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 62,
+                  "endLine": 23,
+                  "endColumn": 88
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 62,
+                  "endLine": 24,
+                  "endColumn": 88
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 62,
+                  "endLine": 40,
+                  "endColumn": 88
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 62,
+                  "endLine": 41,
+                  "endColumn": 88
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 63,
+                  "endLine": 57,
+                  "endColumn": 89
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 62,
+                  "endLine": 58,
+                  "endColumn": 88
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 62,
+                  "endLine": 59,
+                  "endColumn": 88
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 63,
+                  "endLine": 81,
+                  "endColumn": 89
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 62,
+                  "endLine": 82,
+                  "endColumn": 88
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 62,
+                  "endLine": 83,
+                  "endColumn": 88
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 68,
+                  "endLine": 108,
+                  "endColumn": 94
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 62,
+                  "endLine": 114,
+                  "endColumn": 88
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 62,
+                  "endLine": 115,
+                  "endColumn": 88
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "10": null,
+              "11": null,
+              "12": null,
+              "2": null,
+              "3": null,
+              "4": null,
+              "5": null,
+              "6": null,
+              "7": null,
+              "8": null,
+              "9": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'now()' 10 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 124,
+                  "endLine": 23,
+                  "endColumn": 131
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 124,
+                  "endLine": 24,
+                  "endColumn": 131
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 124,
+                  "endLine": 40,
+                  "endColumn": 131
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 124,
+                  "endLine": 41,
+                  "endColumn": 131
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 124,
+                  "endLine": 58,
+                  "endColumn": 131
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 124,
+                  "endLine": 59,
+                  "endColumn": 131
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 124,
+                  "endLine": 82,
+                  "endColumn": 131
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 124,
+                  "endLine": 83,
+                  "endColumn": 131
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 124,
+                  "endLine": 114,
+                  "endColumn": 131
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 124,
+                  "endLine": 115,
+                  "endColumn": 131
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null,
+              "4": null,
+              "5": null,
+              "6": null,
+              "7": null,
+              "8": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'currencies' 6 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 23,
+                  "endLine": 32,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 41,
+                  "endLine": 67,
+                  "endColumn": 53
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 91,
+                  "startColumn": 41,
+                  "endLine": 91,
+                  "endColumn": 53
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 141,
+                  "startColumn": 41,
+                  "endLine": 141,
+                  "endColumn": 53
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 176,
+                  "startColumn": 24,
+                  "endLine": 176,
+                  "endColumn": 36
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 233,
+                  "startColumn": 23,
+                  "endLine": 233,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null,
+              "4": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'character varying(3)' 4 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 55,
+                  "endLine": 36,
+                  "endColumn": 77
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 60,
+                  "endLine": 37,
+                  "endColumn": 82
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 111,
+                  "startColumn": 64,
+                  "endLine": 111,
+                  "endColumn": 86
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 112,
+                  "startColumn": 69,
+                  "endLine": 112,
+                  "endColumn": 91
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'acquirers' 5 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 23,
+                  "endLine": 49,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 41,
+                  "endLine": 123,
+                  "endColumn": 52
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 148,
+                  "startColumn": 24,
+                  "endLine": 148,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 154,
+                  "startColumn": 24,
+                  "endLine": 154,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 224,
+                  "startColumn": 23,
+                  "endLine": 224,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'airlines' 5 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 73,
+                  "startColumn": 23,
+                  "endLine": 73,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 129,
+                  "startColumn": 41,
+                  "endLine": 129,
+                  "endColumn": 51
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 159,
+                  "startColumn": 24,
+                  "endLine": 159,
+                  "endColumn": 34
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 165,
+                  "startColumn": 24,
+                  "endLine": 165,
+                  "endColumn": 34
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 227,
+                  "startColumn": 23,
+                  "endLine": 227,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'transactions' 9 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 23,
+                  "endLine": 97,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 182,
+                  "startColumn": 24,
+                  "endLine": 182,
+                  "endColumn": 38
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 187,
+                  "startColumn": 24,
+                  "endLine": 187,
+                  "endColumn": 38
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 192,
+                  "startColumn": 24,
+                  "endLine": 192,
+                  "endColumn": 38
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 197,
+                  "startColumn": 24,
+                  "endLine": 197,
+                  "endColumn": 38
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 203,
+                  "startColumn": 24,
+                  "endLine": 203,
+                  "endColumn": 38
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 208,
+                  "startColumn": 24,
+                  "endLine": 208,
+                  "endColumn": 38
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 213,
+                  "startColumn": 24,
+                  "endLine": 213,
+                  "endColumn": 38
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/Migrations/20260410105507_InitialCreate.cs",
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 23,
+                  "endLine": 221,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null,
+              "4": null,
+              "5": null,
+              "6": null,
+              "7": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'gen_random_uuid()' 5 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 59,
+                  "endLine": 25,
+                  "endColumn": 78
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 59,
+                  "endLine": 40,
+                  "endColumn": 78
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 59,
+                  "endLine": 55,
+                  "endColumn": 78
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 59,
+                  "endLine": 70,
+                  "endColumn": 78
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 84,
+                  "startColumn": 59,
+                  "endLine": 84,
+                  "endColumn": 78
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'now()' 10 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 66,
+                  "endLine": 31,
+                  "endColumn": 73
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 66,
+                  "endLine": 32,
+                  "endColumn": 73
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 66,
+                  "endLine": 45,
+                  "endColumn": 73
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 66,
+                  "endLine": 46,
+                  "endColumn": 73
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 66,
+                  "endLine": 60,
+                  "endColumn": 73
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 66,
+                  "endLine": 61,
+                  "endColumn": 73
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 66,
+                  "endLine": 75,
+                  "endColumn": 73
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 66,
+                  "endLine": 76,
+                  "endColumn": 73
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 95,
+                  "startColumn": 66,
+                  "endLine": 95,
+                  "endColumn": 73
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Infrastructure/Data/IngestionDbContext.cs",
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 66,
+                  "endLine": 96,
+                  "endColumn": 73
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null,
+              "4": null,
+              "5": null,
+              "6": null,
+              "7": null,
+              "8": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Program.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 72,
+                  "endLine": 19,
+                  "endColumn": 95
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6966",
+          "level": "warning",
+          "message": "Await RunAsync instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Program.cs",
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 1,
+                  "endLine": 62,
+                  "endColumn": 10
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Application/DTOs/CreateTransactionRequest.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 16,
+                  "endLine": 17,
+                  "endColumn": 22
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1873",
+          "level": "note",
+          "message": "Evaluation of this argument may be expensive and unnecessary if logging is disabled",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/ingestion/Api/Controllers/TransactionsController.cs",
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 9,
+                  "endLine": 97,
+                  "endColumn": 103
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CA1873": {
+          "id": "CA1873",
+          "shortDescription": "Avoid potentially expensive logging",
+          "fullDescription": "In many situations, logging is disabled or set to a log level that results in an unnecessary evaluation for this argument.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1873",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "S1075": {
+          "id": "S1075",
+          "shortDescription": "URIs should not be hardcoded",
+          "fullDescription": "Hard-coding a URI makes it difficult to test a program for a variety of reasons:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1075",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1192": {
+          "id": "S1192",
+          "shortDescription": "String literals should not be duplicated",
+          "fullDescription": "Duplicated string literals make the process of refactoring complex and error-prone, as any change would need to be propagated on all occurrences.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1192",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": false,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2068": {
+          "id": "S2068",
+          "shortDescription": "Hard-coded credentials are security-sensitive",
+          "fullDescription": "Because it is easy to extract strings from an application source code or binary, credentials should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2068",
+          "properties": {
+            "category": "Blocker Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6964": {
+          "id": "S6964",
+          "shortDescription": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "fullDescription": "\"Under-posting\" refers to a situation where a client sends less data than expected to the server during an HTTP request, for example when the client omits some properties from the request body that the server expects to receive.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6964",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6966": {
+          "id": "S6966",
+          "shortDescription": "Awaitable method should be used",
+          "fullDescription": "In an async method, any blocking operations should be avoided.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6966",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

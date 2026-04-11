@@ -1,0 +1,1 @@
+wRj/home/juanpabloperez/Work/Projects/Assessments/airline-transaction-monitor/apps/simulator/Simulator.csprojòCSharp14
