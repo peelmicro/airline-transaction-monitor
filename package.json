@@ -40,6 +40,9 @@
 
     "--- DATABASE ---": "",
     "db:migrate:ingestion": "dotnet ef database update --project apps/ingestion",
-    "db:migrate:analytics": "dotnet ef database update --project apps/analytics"
+    "db:migrate:analytics": "dotnet ef database update --project apps/analytics",
+
+    "--- N8N WORKFLOWS ---": "",
+    "n8n:import": "bash scripts/import-n8n-workflows.sh"
   }
 }

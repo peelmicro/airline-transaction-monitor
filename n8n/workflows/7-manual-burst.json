@@ -1,0 +1,51 @@
+{
+  "name": "7 - Manual Burst (webhook trigger)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "burst",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "7a2b3c4d-0007-0000-0000-000000000001",
+      "name": "Webhook /burst",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "burst-trigger-webhook"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://simulator:5003/api/simulator/burst",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"airlineCode\": \"{{ $json.body?.airlineCode || 'Ryanair' }}\",\n  \"count\": {{ $json.body?.count || 50 }},\n  \"errorRate\": {{ $json.body?.errorRate || 0.4 }}\n}",
+        "options": {}
+      },
+      "id": "7a2b3c4d-0007-0000-0000-000000000002",
+      "name": "POST /burst",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    }
+  ],
+  "connections": {
+    "Webhook /burst": {
+      "main": [
+        [
+          {
+            "node": "POST /burst",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

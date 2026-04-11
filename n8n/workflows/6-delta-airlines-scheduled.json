@@ -1,0 +1,54 @@
+{
+  "name": "6 - Delta Air Lines Scheduled (every 70s)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 70
+            }
+          ]
+        }
+      },
+      "id": "6a2b3c4d-0006-0000-0000-000000000001",
+      "name": "Every 70 Seconds",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://simulator:5003/api/simulator/generate",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"airlineCode\": \"DeltaAirLines\",\n  \"count\": 2,\n  \"errorRate\": 0.07\n}",
+        "options": {}
+      },
+      "id": "6a2b3c4d-0006-0000-0000-000000000002",
+      "name": "POST /generate",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    }
+  ],
+  "connections": {
+    "Every 70 Seconds": {
+      "main": [
+        [
+          {
+            "node": "POST /generate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

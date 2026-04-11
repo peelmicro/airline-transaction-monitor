@@ -1,0 +1,54 @@
+{
+  "name": "4 - EasyJet Scheduled (every 50s)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 50
+            }
+          ]
+        }
+      },
+      "id": "4a2b3c4d-0004-0000-0000-000000000001",
+      "name": "Every 50 Seconds",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://simulator:5003/api/simulator/generate",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"airlineCode\": \"EasyJet\",\n  \"count\": 2,\n  \"errorRate\": 0.05\n}",
+        "options": {}
+      },
+      "id": "4a2b3c4d-0004-0000-0000-000000000002",
+      "name": "POST /generate",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    }
+  ],
+  "connections": {
+    "Every 50 Seconds": {
+      "main": [
+        [
+          {
+            "node": "POST /generate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
