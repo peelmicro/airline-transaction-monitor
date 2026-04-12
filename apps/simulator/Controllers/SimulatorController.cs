@@ -95,7 +95,8 @@ public class SimulatorController : ControllerBase
                 else
                 {
                     failed++;
-                    _logger.LogWarning("Failed to forward transaction: {StatusCode}", response.StatusCode);
+                    var errorBody = await response.Content.ReadAsStringAsync(ct);
+                    _logger.LogWarning("Failed to forward transaction: {StatusCode} - {Body}", response.StatusCode, errorBody);
                 }
             }
             catch (Exception ex)

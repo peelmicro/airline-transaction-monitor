@@ -24,6 +24,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'transactions/:id',
+        loadComponent: () =>
+          import('./transactions/transaction-detail').then(
+            (m) => m.TransactionDetailComponent
+          ),
+      },
+      {
         path: 'alerts',
         loadComponent: () =>
           import('./alerts/alerts').then((m) => m.AlertsComponent),

@@ -29,7 +29,7 @@ public class TransactionsProxyController : ControllerBase
     {
         var client = _httpClientFactory.CreateClient("ingestion");
         var content = new StreamContent(Request.Body);
-        content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(
+        content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse(
             Request.ContentType ?? "application/json");
 
         var response = await client.PostAsync("/api/transactions", content);
