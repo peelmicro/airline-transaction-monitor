@@ -1,0 +1,212 @@
+services:
+  # ═══════════════════════════════════════════════════════════════════════
+  # INFRASTRUCTURE (7 containers)
+  # ═══════════════════════════════════════════════════════════════════════
+
+  postgres:
+    image: postgres:16
+    container_name: atm-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/postgres/init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  nats:
+    image: nats:latest
+    container_name: atm-nats
+    command: ["--jetstream", "--store_dir", "/data", "-m", "8222"]
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+    volumes:
+      - nats_data:/data
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: atm-n8n
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=http://localhost:5678/
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_PERSONALIZATION_ENABLED=false
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./n8n/workflows:/home/node/workflows
+
+  sonarqube:
+    image: sonarqube:community
+    container_name: atm-sonarqube
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+      - SONAR_FORCEAUTHENTICATION=false
+    ports:
+      - "9000:9000"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: atm-jaeger
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "16686:16686"
+      - "4317:4317"
+      - "4318:4318"
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: atm-prometheus
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: atm-grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./infra/grafana/provisioning:/etc/grafana/provisioning
+      - ./infra/grafana/dashboards:/var/lib/grafana/dashboards
+    depends_on:
+      - prometheus
+
+  # ═══════════════════════════════════════════════════════════════════════
+  # APPLICATION SERVICES (5 containers)
+  # ═══════════════════════════════════════════════════════════════════════
+
+  gateway:
+    build:
+      context: .
+      dockerfile: apps/gateway/Dockerfile
+    container_name: atm-gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - Jwt__Secret=AirlineTransactionMonitorSuperSecretKey2026!@#$$%
+      - Jwt__Issuer=airline-transaction-monitor
+      - Jwt__Audience=airline-transaction-monitor-clients
+      - Jwt__ExpirationMinutes=60
+      - Nats__Url=nats://nats:4222
+      - Otlp__Endpoint=http://jaeger:4317
+      - Services__IngestionUrl=http://ingestion:5001
+      - Services__AnalyticsUrl=http://analytics:5002
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      nats:
+        condition: service_started
+
+  ingestion:
+    build:
+      context: .
+      dockerfile: apps/ingestion/Dockerfile
+    container_name: atm-ingestion
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__IngestionDb=Host=postgres;Port=5432;Database=ingestion_db;Username=postgres;Password=postgres
+      - Jwt__Secret=AirlineTransactionMonitorSuperSecretKey2026!@#$$%
+      - Jwt__Issuer=airline-transaction-monitor
+      - Jwt__Audience=airline-transaction-monitor-clients
+      - Nats__Url=nats://nats:4222
+      - Otlp__Endpoint=http://jaeger:4317
+      - ASPNETCORE_URLS=http://+:5001
+    ports:
+      - "5001:5001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      nats:
+        condition: service_started
+
+  analytics:
+    build:
+      context: .
+      dockerfile: apps/analytics/Dockerfile
+    container_name: atm-analytics
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__AnalyticsDb=Host=postgres;Port=5432;Database=analytics_db;Username=postgres;Password=postgres
+      - Jwt__Secret=AirlineTransactionMonitorSuperSecretKey2026!@#$$%
+      - Jwt__Issuer=airline-transaction-monitor
+      - Jwt__Audience=airline-transaction-monitor-clients
+      - Nats__Url=nats://nats:4222
+      - Otlp__Endpoint=http://jaeger:4317
+      - ASPNETCORE_URLS=http://+:5002
+    ports:
+      - "5002:5002"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      nats:
+        condition: service_started
+
+  simulator:
+    build:
+      context: .
+      dockerfile: apps/simulator/Dockerfile
+    container_name: atm-simulator
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - Services__GatewayUrl=http://gateway:5000
+      - Otlp__Endpoint=http://jaeger:4317
+      - ASPNETCORE_URLS=http://+:5003
+    ports:
+      - "5003:5003"
+    depends_on:
+      - gateway
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: atm-web
+    ports:
+      - "4200:4200"
+    depends_on:
+      - gateway
+
+volumes:
+  postgres_data:
+  nats_data:
+  n8n_data:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  prometheus_data:
+  grafana_data:
