@@ -23,7 +23,7 @@ public class MetricsProxyController : ControllerBase
     [HttpGet("api/airlines/{code}/metrics")]
     public async Task<IActionResult> GetAirlineMetrics(string code)
     {
-        var client = _httpClientFactory.CreateClient("analytics");
+        var client = CreateAuthenticatedClient("analytics");
         var response = await client.GetAsync($"/api/airlines/{code}/metrics");
         var body = await response.Content.ReadAsStringAsync();
 
@@ -36,11 +36,20 @@ public class MetricsProxyController : ControllerBase
     [HttpGet("api/alerts")]
     public async Task<IActionResult> GetAlerts()
     {
-        var client = _httpClientFactory.CreateClient("analytics");
+        var client = CreateAuthenticatedClient("analytics");
         var queryString = Request.QueryString.Value ?? "";
         var response = await client.GetAsync($"/api/alerts{queryString}");
         var body = await response.Content.ReadAsStringAsync();
 
         return StatusCode((int)response.StatusCode, body);
+    }
+
+    private HttpClient CreateAuthenticatedClient(string name)
+    {
+        var client = _httpClientFactory.CreateClient(name);
+        var authHeader = Request.Headers.Authorization.ToString();
+        if (!string.IsNullOrEmpty(authHeader))
+            client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", authHeader);
+        return client;
     }
 }

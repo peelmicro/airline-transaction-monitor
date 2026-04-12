@@ -11,7 +11,10 @@ public static class AnalyticsDbSeeder
 {
     public static async Task SeedAsync(AnalyticsDbContext context)
     {
-        // Apply pending migrations automatically
-        await context.Database.MigrateAsync();
+        // Apply pending migrations (skip for non-relational providers like InMemory)
+        if (context.Database.IsRelational())
+            await context.Database.MigrateAsync();
+        else
+            await context.Database.EnsureCreatedAsync();
     }
 }

@@ -1,10 +1,12 @@
 using Analytics.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Analytics.Api.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/alerts")]
 public class AlertsController : ControllerBase
 {

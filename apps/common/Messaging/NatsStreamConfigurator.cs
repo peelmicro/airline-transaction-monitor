@@ -13,7 +13,13 @@ public static class NatsStreamConfigurator
 {
     public static async Task ConfigureStreamsAsync(INatsConnection connection, ILogger logger)
     {
-        var js = new NatsJSContext((NatsConnection)connection);
+        if (connection is not NatsConnection natsConn)
+        {
+            logger.LogWarning("NATS connection is not a NatsConnection instance; skipping stream configuration");
+            return;
+        }
+
+        var js = new NatsJSContext(natsConn);
 
         var streams = new[]
         {

@@ -15,4 +15,12 @@
   <Folder Name="/apps/simulator/">
     <Project Path="apps/simulator/Simulator.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Analytics.IntegrationTests/Analytics.IntegrationTests.csproj" />
+    <Project Path="tests/Analytics.UnitTests/Analytics.UnitTests.csproj" />
+    <Project Path="tests/Gateway.IntegrationTests/Gateway.IntegrationTests.csproj" />
+    <Project Path="tests/Gateway.UnitTests/Gateway.UnitTests.csproj" />
+    <Project Path="tests/Ingestion.IntegrationTests/Ingestion.IntegrationTests.csproj" />
+    <Project Path="tests/Ingestion.UnitTests/Ingestion.UnitTests.csproj" />
+  </Folder>
 </Solution>

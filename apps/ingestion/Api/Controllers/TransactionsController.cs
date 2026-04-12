@@ -4,12 +4,14 @@ using Ingestion.Application.DTOs;
 using Ingestion.Application.Ports;
 using Ingestion.Domain.Entities;
 using Ingestion.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ingestion.Api.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/transactions")]
 public class TransactionsController : ControllerBase
 {

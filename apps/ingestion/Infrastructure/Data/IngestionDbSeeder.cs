@@ -11,8 +11,11 @@ public static class IngestionDbSeeder
 {
     public static async Task SeedAsync(IngestionDbContext context)
     {
-        // Apply pending migrations automatically
-        await context.Database.MigrateAsync();
+        // Apply pending migrations (skip for non-relational providers like InMemory)
+        if (context.Database.IsRelational())
+            await context.Database.MigrateAsync();
+        else
+            await context.Database.EnsureCreatedAsync();
 
         // Only seed if currencies table is empty (first run)
         if (await context.Currencies.AnyAsync())

@@ -1,10 +1,12 @@
 using Analytics.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Analytics.Api.Controllers;
 
 [ApiController]
+[Authorize]
 public class MetricsController : ControllerBase
 {
     private readonly AnalyticsDbContext _context;

@@ -60,3 +60,6 @@ app.MapControllers();
 app.MapHealthChecks("/health");
 
 app.Run();
+
+// Needed for WebApplicationFactory in integration tests
+public partial class Program { }

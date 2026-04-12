@@ -34,7 +34,7 @@
 
     "--- ANGULAR DASHBOARD (local dev) ---": "",
     "web": "cd apps/web && npm start",
-    "web:test": "cd apps/web && npx vitest --run",
+    "web:test": "cd apps/web && npx ng test --watch=false",
     "web:build": "cd apps/web && npm run build",
     "web:lint": "cd apps/web && npm run lint",
 
