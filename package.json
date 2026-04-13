@@ -43,6 +43,13 @@
     "db:migrate:analytics": "dotnet ef database update --project apps/analytics",
 
     "--- N8N WORKFLOWS ---": "",
-    "n8n:import": "bash scripts/import-n8n-workflows.sh"
+    "n8n:import": "bash scripts/import-n8n-workflows.sh",
+
+    "--- JENKINS (CI profile) ---": "",
+    "jenkins:up": "docker compose --profile ci up -d jenkins",
+    "jenkins:down": "docker compose --profile ci stop jenkins && docker compose --profile ci rm -f jenkins",
+    "jenkins:build": "docker compose --profile ci build jenkins",
+    "jenkins:logs": "docker compose --profile ci logs -f jenkins",
+    "jenkins:ps": "docker compose --profile ci ps jenkins"
   }
 }

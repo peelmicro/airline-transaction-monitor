@@ -201,6 +201,33 @@ services:
     depends_on:
       - gateway
 
+  # ═══════════════════════════════════════════════════════════════════════
+  # CI/CD
+  # ═══════════════════════════════════════════════════════════════════════
+
+  # ─── Jenkins ───────────────────────────────────────────────────────────
+  # Custom image with .NET 10 SDK, Node.js 24, Docker CLI, and pre-installed plugins
+  # Auto-configured via JCasC — no setup wizard. Login: admin / admin
+  # The project source is mounted so the pipeline can build/test the code
+  jenkins:
+    build:
+      context: .
+      dockerfile: infra/jenkins/Dockerfile
+    container_name: atm-jenkins
+    user: root
+    profiles:
+      - ci
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - .:/var/jenkins_home/workspace/airline-transaction-monitor
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/casc.yaml
+
 volumes:
   postgres_data:
   nats_data:
@@ -210,3 +237,4 @@ volumes:
   sonarqube_logs:
   prometheus_data:
   grafana_data:
+  jenkins_data:

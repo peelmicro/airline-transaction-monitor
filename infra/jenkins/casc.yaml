@@ -1,0 +1,119 @@
+jenkins:
+  systemMessage: "Airline Transaction Monitor — CI/CD Pipeline (auto-configured via JCasC)"
+  numExecutors: 2
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "admin"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  globalNodeProperties:
+    - envVars:
+        env:
+          - key: "DOTNET_CLI_TELEMETRY_OPTOUT"
+            value: "1"
+          - key: "DOTNET_NOLOGO"
+            value: "1"
+
+unclassified:
+  location:
+    url: "http://localhost:8080/"
+  globalDefaultFlowDurabilityLevel:
+    durabilityHint: PERFORMANCE_OPTIMIZED
+
+jobs:
+  - script: >
+      pipelineJob('airline-transaction-monitor') {
+        description('CI/CD pipeline for the Airline Transaction Monitor — .NET 10 + Angular 21')
+        definition {
+          cps {
+            script('''
+              pipeline {
+                agent any
+                options {
+                  timeout(time: 30, unit: 'MINUTES')
+                }
+                stages {
+                  stage('Restore & Build') {
+                    steps {
+                      dir('/var/jenkins_home/workspace/airline-transaction-monitor') {
+                        sh 'dotnet restore'
+                        sh 'dotnet build --configuration Release --no-restore'
+                      }
+                    }
+                  }
+                  stage('.NET Tests') {
+                    steps {
+                      dir('/var/jenkins_home/workspace/airline-transaction-monitor') {
+                        sh 'dotnet test --configuration Release --no-build --logger "trx;LogFileName=results.trx" --results-directory TestResults'
+                      }
+                    }
+                  }
+                  stage('Angular Build & Test') {
+                    steps {
+                      dir('/var/jenkins_home/workspace/airline-transaction-monitor/apps/web') {
+                        sh 'npm install'
+                        sh 'npx ng test --watch=false'
+                        sh 'npx ng build --configuration production'
+                      }
+                    }
+                  }
+                  stage('Docker Images') {
+                    parallel {
+                      stage('Gateway') {
+                        steps {
+                          dir('/var/jenkins_home/workspace/airline-transaction-monitor') {
+                            sh 'docker build -t atm-gateway:latest -f apps/gateway/Dockerfile .'
+                          }
+                        }
+                      }
+                      stage('Ingestion') {
+                        steps {
+                          dir('/var/jenkins_home/workspace/airline-transaction-monitor') {
+                            sh 'docker build -t atm-ingestion:latest -f apps/ingestion/Dockerfile .'
+                          }
+                        }
+                      }
+                      stage('Analytics') {
+                        steps {
+                          dir('/var/jenkins_home/workspace/airline-transaction-monitor') {
+                            sh 'docker build -t atm-analytics:latest -f apps/analytics/Dockerfile .'
+                          }
+                        }
+                      }
+                      stage('Simulator') {
+                        steps {
+                          dir('/var/jenkins_home/workspace/airline-transaction-monitor') {
+                            sh 'docker build -t atm-simulator:latest -f apps/simulator/Dockerfile .'
+                          }
+                        }
+                      }
+                      stage('Web') {
+                        steps {
+                          dir('/var/jenkins_home/workspace/airline-transaction-monitor') {
+                            sh 'docker build -t atm-web:latest -f apps/web/Dockerfile .'
+                          }
+                        }
+                      }
+                    }
+                  }
+                  stage('Deploy (Mock)') {
+                    steps {
+                      echo 'Deploy stage - in production: push images, update K8s manifests, rolling update'
+                      echo 'Build ready for deployment.'
+                    }
+                  }
+                }
+                post {
+                  success { echo 'Pipeline completed successfully!' }
+                  failure { echo 'Pipeline failed. Check logs.' }
+                }
+              }
+            '''.stripIndent())
+            sandbox(true)
+          }
+        }
+      }
