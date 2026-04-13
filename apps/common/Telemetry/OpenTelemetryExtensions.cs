@@ -32,6 +32,8 @@ public static class OpenTelemetryExtensions
                 metrics
                     .AddAspNetCoreInstrumentation()
                     .AddHttpClientInstrumentation()
+                    .AddMeter("Npgsql")
+                    .AddMeter("NATS.Client")
                     .AddPrometheusExporter();
             });
 

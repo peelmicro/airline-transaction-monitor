@@ -3,6 +3,14 @@ using Simulator.Generators;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Check if simulator is enabled (can be disabled via SIMULATOR_ENABLED=false)
+var simulatorEnabled = builder.Configuration.GetValue("SIMULATOR_ENABLED", true);
+if (!simulatorEnabled)
+{
+    Console.WriteLine("TransactionSimulator is disabled (SIMULATOR_ENABLED=false). Exiting.");
+    return;
+}
+
 // Transaction generator (Bogus)
 builder.Services.AddSingleton<TransactionGenerator>();
 

@@ -168,6 +168,62 @@
           "refId": "A"
         }
       ]
+    },
+    {
+      "title": "DB Connection Pool Usage",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 22 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": { "mode": "palette-classic" }
+        }
+      },
+      "options": {
+        "legend": { "displayMode": "table", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "multi" }
+      },
+      "targets": [
+        {
+          "expr": "sum by (job, state) (db_client_connections_usage)",
+          "legendFormat": "{{job}} ({{state}})",
+          "refId": "A"
+        },
+        {
+          "expr": "sum by (job) (db_client_connections_pending_requests)",
+          "legendFormat": "{{job}} pending",
+          "refId": "B"
+        }
+      ]
+    },
+    {
+      "title": "NATS Consumer Lag (messages/s)",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 22 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "mps",
+          "color": { "mode": "palette-classic" }
+        }
+      },
+      "options": {
+        "legend": { "displayMode": "table", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "multi" }
+      },
+      "targets": [
+        {
+          "expr": "sum by (job) (rate(nats_client_messages_received_total[1m]))",
+          "legendFormat": "{{job}} received",
+          "refId": "A"
+        },
+        {
+          "expr": "sum by (job) (rate(nats_client_messages_sent_total[1m]))",
+          "legendFormat": "{{job}} sent",
+          "refId": "B"
+        }
+      ]
     }
   ],
   "refresh": "10s",

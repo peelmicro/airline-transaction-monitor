@@ -183,6 +183,7 @@ services:
     container_name: atm-simulator
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+      - SIMULATOR_ENABLED=true
       - Services__GatewayUrl=http://gateway:5000
       - Otlp__Endpoint=http://jaeger:4317
       - ASPNETCORE_URLS=http://+:5003

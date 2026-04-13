@@ -50,6 +50,7 @@
     "jenkins:down": "docker compose --profile ci stop jenkins && docker compose --profile ci rm -f jenkins",
     "jenkins:build": "docker compose --profile ci build jenkins",
     "jenkins:logs": "docker compose --profile ci logs -f jenkins",
-    "jenkins:ps": "docker compose --profile ci ps jenkins"
+    "jenkins:ps": "docker compose --profile ci ps jenkins",
+    "jenkins:clean": "docker compose --profile ci stop jenkins && docker compose --profile ci rm -f jenkins && docker volume rm -f airline-transaction-monitor_jenkins_data"
   }
 }
